@@ -1,0 +1,534 @@
+<!DOCTYPE html><html><head aria-atomic="True"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="icon" href="images/titleimage.png"><title>
+Invoice Desing - TÜRKKEP E-Base Portal
+</title>
+
+
+
+
+<style type="text/css">
+
+
+body {
+background-color: #FFFFFF;
+font-family: 'Tahoma', "Times New Roman", Times, serif;
+font-size: 11px;
+color:black !important;
+}
+#BodyDiv{
+width:auto;
+overflow:auto;
+padding:10px;
+z-index:1;
+color:black;
+}
+#InvoiceDesingDiv{
+width:60%;
+z-index:2;
+float:left;
+padding:10px;
+}
+#DesingPanelDiv{
+width:35%;
+z-index:2;
+float:right;
+}
+#ServicerInfoDiv {
+width: 45%;
+height: auto;
+background-color: white;
+border-top: 4px solid black;
+border-bottom: 4px solid black;
+z-index: 3;
+}
+#CostumerInfoDiv {
+width: 45%;
+height: auto;
+background-color: white;
+z-index: 3;
+border-top: 4px solid black;
+border-bottom: 4px solid black;
+margin-top: 10px;
+float:left;
+}
+
+#EmptyInfoDiv {
+width: 45%;
+height:auto;
+background-color: white;
+z-index: 3;
+border-top: 4px solid black;
+border-bottom: 4px solid black;
+float: right;
+margin-top: 10px;
+margin-left:70px;
+}
+
+#GibLogoDiv {
+width: 100px;
+height: 100px;
+padding: 5px;
+z-index: 3;
+float: right;
+margin-top: 20px;
+margin-right: 20px;
+}
+#CompanyLogoDiv {
+width: 100px;
+height: 100px;
+padding: 5px;
+z-index: 3;
+float: right;
+margin-top: 20px;
+}
+#EmptyLogoDiv {
+width: 100px;
+height: 100px;
+padding:5px;
+z-index: 3;
+float: right;
+margin-top: 20px;
+margin-right: 20px;
+}
+
+#EmptyLogoDiv2 {
+width:250px;
+height:130px;
+padding: 5px;
+z-index: 3;
+float: right;
+margin-top:20px;
+margin-right:30px;
+}
+
+
+
+
+
+.hovered {
+border: dotted 5px black;
+}
+
+.invisible {
+display: none;
+}
+
+.held {
+border: solid 10px black;
+background-color: black;
+}
+
+#InvoiceInfoTable {
+float:left;
+border-collapse: collapse;
+z-index: 3;
+background-color: white;
+}
+
+#InvoiceInfoTable td {
+width:110px;
+}
+
+
+#InvoiceCostDiv {
+z-index: 3;
+width: 100%;
+margin-top:200px;
+}
+
+#InvoiceCost1Table {
+width: 100%;
+border-collapse: collapse;
+text-align: center;
+z-index: 3;
+background-color: white;
+}
+
+#InvoiceCostDiv2 {
+z-index: 3;
+width: 100%;
+}
+
+#InvoiceCost2Table {
+width: 50%;
+border-collapse: collapse;
+text-align: center;
+float: right;
+z-index: 3;
+background-color: white;
+}
+#InvoiceCost2Table th{
+width:65%;
+}
+#InvoiceCost2Table td {
+width: 35%;
+}
+
+
+#BankInfo{
+width:100%;
+margin-top:100px;
+}
+#BankInfoTable {
+width: 100%;
+border-collapse: collapse;
+text-align: center;
+z-index: 3;
+background-color: white;
+
+}
+
+
+#EditorTable {
+width: 100%;
+}
+
+
+.thstyle {
+background-color: green;
+}
+#InvoiceInfoDiv{
+width:250px;
+height:200px;
+float:left;
+margin-top:50px;
+}
+
+
+
+
+
+.auto-style1 {
+width: 29px;
+}
+.auto-style2 {
+width: 8px;
+}
+.auto-style3 {
+width: 114px;
+}
+.otoconfig{
+width:136px;
+}
+
+.auto-style4 {
+height: 20px;
+}
+
+</style>
+</head>
+
+<body>
+<form method="post" action="./invoicedesing" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="NI4oBaGu3U6cfDbecGDi1j172MyxhyO8shYTarnCNCREvXnTT9hNSnVfkykP8wJVvAti0/U5Gz2nQF+WeTGz7HebhVAuloCx+PN6SoZrCRDNOngLGFx89PCEk7U+PzJnkKYH1ECDOq7EKbkbdMF4NIs8MoX7hgoMeeXNIXtBJLddK/sJM6LVInGk3Vja9s7/4UiQ2/zxSJZBLvX3VAFvWcbyrxRb4hbt42b/66FS+bCCJFM42o9GEZghOTdC9NgxGxiKmXfZ8jxij3A1gL83aQbir1HvM/rMsXlQ9B7aSJOEhtz2URnSdAevyNQmpHUkAFvFJQ+ebz/YPisZyW4D6v1dQOoKH/W10KpWUxitVZtak9l2EtW1PngtbGEt1RRpseClcGjcT0HxbEJfLitUetu919xPMNsWsBCjuAkPYY+5FSMlrYlcrQ1hjR10OCWMUWGTMaPRZQzurA3hPP+xrkyTYosZuctCumZdVp/YGY9wjIAoagL3K3zwzSWCZL33YahWB9fW4sdyEAzgMWQuw6Sa4ojfK/bgHH0rtfwg3IoXBnBL0U9dd5OWkx02UOZjoOjkxSmCBBznstTD76Ki3Fs9E2FodmeCbieQoNB9H91L48yg9k5haBmt/lIWp7MpsexUq9eQZobRxLEfitvo+ux81nf+LLwgATADVjKosmPzI+aRdvutMDXHDdwGBthGj6jr2YCp0KISrOWL5ziAGLlSZSzR2CWiOi0TIYOmuagEzAS12LyUVFkOIQi4gmAau+qHjuKEw+DiKU9hMl8mXNHo4ZonJsKmEy906haz/8nWXJepZM6Qu5ppnETEV5dNyV0wSyB/vbjPve70ul+0X5U8B44y9stL8Uaoy+71jEZGKM51oR21/pC8rmNyURZafIlY0Ti76kq6iI6IPm/x1x4KM8K/o1Gj7uUfzEX+i3Dsil2wVKoNwa2sk2zCgOgqlktuGEpZ+rUp3eYLFyVHy8Mc6ZGV9LbXPQaEyvoRWWghDusY8lGd1j6XW8Boi/Q7t91hKiK2k4or+Cjzmvfm/zQydPOxWzdatAYVsP+S6FawucvOq9EFOqUqjQ6ZKbx8uEMoEFQ2LWslKgbt6fiHwqAGGOk6jA+a0UgbPW5Dc0r7rhZEjXuP7fY6VgfZAJS3GMZU+kNjSlC1gxz17Rqa2ptcnz6mNgkTpheAy98eaFzrylSjs9AOcFXQwb/scx1C9npmLrPzNck4FirLVs6CFDe8KffYnj6njs/bMDNrJDY4ANiZrUYCtdAUuwcS8V5SzM5BvZMBI9oJRwnSCR7RIaGAH+GPqNFs7L6zvfIZAdI3l+BGiFowvkrogMkFFWuDFXR8tE02Hs0IW5Rv068rFn6jDZfonKxKEyYyoKtgpongIA2hiWy/yUqLfjlF3WF751LigIlVEefGx7yvDZpQOCBUNWuWSVkQkam+8S2XGuJNfhxilEfE7CSZIdGZcifKX4Kh6C9g45kI8gTUYhftumMXbGhs3+FVo7fZP7iAknr3vjwHttBytMKaIoO1YH0Gu5glZ11VrQazeWHFTvz0s4emzUwoRLFxT/vIFBLculQXisMcvd2qbknEUsSMkJV3TnVs3zDe4C215WlW66eN2fgGiiOhsIsxIoJX+/cQkF7B4t9sKUP2yfAl37Uc9k4jxOpgcMubzUb8GbYipPIpk3xCsj/KMAZ49ozx13uSXacZ3nOyN3cF9syXrP5E2bB54RwaROuzJAo/3d85Bv27EZTzFR4uTEh8lveDAfstegxdMrNuKIjuHiueuKzByVCWnBJOL/LBM16oQ1bVWXa8Go02pNrkffvnIpj4wBfeSoExWXDtNjv3qzp1cL81eFul3qSatLbZaM8V0Ab2OfGfoNgrURQmDieZ6e7Zo94qB6gJcPyTJqsHjEKeCT1bVzrVEUCEJ2903YT8nvtwQvqWmAthF3+JXlceTEf3Kbn8CN8=">
+</div>
+
+<div id="BodyDiv" style="font-size: 11px; font-family:Tahoma,'Times New Roman'">
+
+
+<div id="InvoiceDesingDiv" style="color:black;">
+
+<div id="CompanyLogoDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+<img src="images/uskudar-universitesi-logo.jpg" id="ImageCompanyLogo" style="width:100px; height:100px;background-color:#666666" draggable="false" ondragstart="drag(event)" border="0">
+
+</div>
+
+
+
+<div id="GibLogoDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+<img src="images/untitled.png" id="ImageGibLogo" style="height:100px;width:100px" draggable="false" ondragstart="drag(event)">
+</div>
+
+
+<div id="EmptyLogoDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+
+
+
+<div id="ServicerInfoDiv" ondrop="drop(event)" ondragover="allowDrop(event)"> <!--It contains servicer company information-->
+<table id="ServicerInfoTable" draggable="false" ondragstart="drag(event)">
+<tbody><tr>
+<td><b>TÜRKKEP A.Ş</b></td>
+</tr>
+<tr>
+<td>Sümer Sok.a Ayazağa Ticaret Merkezi No:3 Maslak / İSTANBUL </td>
+</tr>
+<tr>
+<td>Tel: (222) 236 91 31 Fax: (850) 470 53 70 </td>
+</tr>
+<tr>
+<td>Web Sitesi: www.mngkargo.com.tr</td>
+</tr>
+<tr>
+<td>E-Posta: info@mngkargo.com.tr</td>
+</tr>
+<tr>
+<td>Vergi Dairesi: BÜYÜK MÜKELLEFLER VD.BŞK.LIĞI </td>
+</tr>
+<tr>
+<td>MERSISNO: 0622034422034422</td>
+</tr>
+<tr>
+<td>TICARETSICILNO: s123</td>
+</tr>
+<tr>
+<td>VKN: 6080475329</td>
+</tr>
+</tbody></table>
+
+</div>
+
+
+
+<div id="EmptyInfoDiv" ondrop="drop(event)" ondragover="allowDrop(event)"> <!--It contains servicer company information-->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="CostumerInfoDiv" ondrop="drop(event)" ondragover="allowDrop(event)"> <!--It contains costumer/costumer company information-->
+<table id="CostumerInfoTable" draggable="false" ondragstart="drag(event)">
+<tbody><tr>
+<td><b>ÜSKÜDAR ÜNİVERSİTESİ</b></td>
+</tr>
+<tr>
+<td>Sümer Sok.a Ayazağa Ticaret Merkezi No:3 Altunizade / İSTANBUL </td>
+</tr>
+<tr>
+<td>Tel: (222) 578 23 26 Fax: (850) 371 43 79 </td>
+</tr>
+<tr>
+<td>Web Sitesi: www.uskudaruniversitesi.com.tr</td>
+</tr>
+<tr>
+<td>E-Posta: info@uskudaruniversitesi.com.tr</td>
+</tr>
+<tr>
+<td>Vergi Dairesi: BÜYÜK MÜKELLEFLER VD.BŞK.LIĞI </td>
+</tr>
+<tr>
+<td>MERSISNO: 0622034422034422</td>
+</tr>
+<tr>
+<td>TICARETSICILNO: s123</td>
+</tr>
+<tr>
+<td>VKN: 6080475329</td>
+</tr>
+</tbody></table>
+
+</div>
+
+<div id="EmptyLogoDiv2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+
+
+
+
+
+<div id="InvoiceCostDiv">
+<table id="InvoiceCost1Table" border="1">
+<tbody><tr>
+<th id="kalemth1" class="auto-style2" style="background-color:chocolate;">Sıra No</th>
+<th id="kalemth2" class="auto-style3" style="background-color:chocolate;">Mal Hizmet</th>
+<th id="kalemth3" style="background-color:chocolate;">Miktar</th>
+<th id="kalemth4" style="background-color:chocolate;">Birim Fiyat</th>
+<th id="kalemth5" style="background-color:chocolate;">İskonto Oranı</th>
+<th id="kalemth6" style="background-color:chocolate;">İskonto Tutarı</th>
+<th id="kalemth7" style="background-color:chocolate;">KDV Oranı</th>
+<th id="kalemth11" style="background-color:chocolate;">KDV Tutarı</th>
+<th id="kalemth8" style="background-color:chocolate;">Diğer Vergiler</th>
+<th id="kalemth10" class="otoconfig" style="background-color:chocolate;">Mal Hizmet Tutarı</th>
+</tr>
+<tr>
+<td class="auto-style2">1</td>
+<td class="auto-style3">test</td>
+<td>test</td>
+<td>33</td>
+<td>50TL</td>
+<td></td>
+<td> %10,00</td>
+<td></td>
+<td></td>
+<td> 600,00 TL</td>
+</tr>
+</tbody></table>
+
+
+<div id="InvoiceInfoDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+<table id="InvoiceInfoTable" border="1" draggable="false" ondragstart="drag(event)">
+<tbody><tr>
+<td id="invoiceinfotd1" style="font-weight:bold;background-color:chocolate;">Özelleştirme No:</td>
+<td>TR1.2</td>
+</tr>
+<tr>
+<td id="invoiceinfotd2" style="font-weight:bold;background-color:chocolate;" class="auto-style1">Senaryo:</td>
+<td>TICARIFATURA</td>
+</tr>
+<tr>
+<td id="invoiceinfotd3" style="font-weight:bold;background-color:chocolate;">Fatura Tipi:</td>
+<td>SATIS</td>
+</tr>
+<tr>
+<td id="invoiceinfotd4" style="font-weight:bold;background-color:chocolate;">Fatura No:</td>
+<td></td>
+</tr>
+<tr>
+<td id="invoiceinfotd5" style="font-weight:bold;background-color:chocolate;">Fatura Tarihi:</td>
+<td>12-10-2018</td>
+</tr>
+<tr>
+<td id="invoiceinfotd6" style="font-weight:bold;background-color:chocolate;">Sipariş No:</td>
+<td>1234</td>
+</tr>
+<tr>
+<td id="invoiceinfotd7" style="font-weight:bold;background-color:chocolate;">Sipariş Tarihi:</td>
+<td>11-10-2018</td>
+</tr>
+</tbody></table>
+
+</div>
+
+
+
+
+
+<table id="InvoiceCost2Table" border="1">
+<tbody><tr>
+<th id="kalem2th1" style="background-color:chocolate;">Mal Hizmet Toplam Tutarı</th>
+<td>600,00 TL</td>
+</tr>
+<tr>
+<th id="kalem2th2" style="background-color:chocolate;">Toplam İskonto</th>
+<td>0,00 TL</td>
+</tr>
+<tr>
+<th id="kalem2th3" style="background-color:chocolate;">Hesaplanan GERÇEK USULDE KATMA DEĞER VERGİSİ (%10.00)</th>
+<td>60,00 TL</td>
+</tr>
+<tr>
+<th id="kalem2th4" style="background-color:chocolate;">Vergiler Dahil Toplam Tutar</th>
+<td>660,00 TL</td>
+</tr>
+<tr>
+<th id="kalem2th5" style="background-color:chocolate;">Ödenecek Tutar</th>
+<td>660,00 TL</td>
+</tr>
+</tbody></table>
+
+</div>
+
+
+
+
+
+<div id="BankInfo">
+
+<table id="BankInfoTable" border="1">
+<tbody><tr>
+<td id="banktd1" colspan="4" style="background-color:chocolate;">
+<h3>BANKA HESAP BİLGİLERİMİZ</h3>
+
+</td>
+</tr>
+<tr>
+<th id="bankth1" style="width:150px;background-color:chocolate;">
+BANKA ADI
+</th>
+<th id="bankth2" style="width:180px;background-color:chocolate;">
+ŞUBE KODU
+</th>
+<th id="bankth3" style="width:260px;background-color:chocolate;">
+IBAN
+</th>
+</tr>
+<tr>
+<td>YAPIKREDİ TL</td>
+<td>(917)</td>
+<td>TR83 0006 7010 0000 0071 4570 49</td>
+</tr>
+<tr>
+<td>YAPIKREDİ USD</td>
+<td>(917)</td>
+<td>TR51 0006 7010 0000 0071 5117 51</td>
+</tr>
+<tr>
+<td>GARANTİ</td>
+<td>598</td>
+<td>TR25 0006 7025 0000 2569 2589 87</td>
+</tr>
+<tr>
+<td>Ziraat</td>
+<td>23523</td>
+<td>246347347</td>
+</tr>
+<tr>
+<td>İŞ BANKASI</td>
+<td>625 </td>
+<td> TR36 5489485616541894895165</td>
+</tr>
+<tr>
+<td>ALBARAKA</td>
+<td>856 </td>
+<td> TR 165418941515616510</td>
+</tr>
+<tr>
+<td>MNG</td>
+<td>569</td>
+<td>TR 154851021065189</td>
+</tr>
+</tbody></table>
+
+</div>
+
+</div> <!--Invoice desing preview div-->
+
+
+<!--It contains items for desing of invoice-->
+
+
+
+
+</div> <!--It contains all page-->
+
+
+
+
+
+<div class="aspNetHidden">
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AF58DE28">
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="25rvO0hbInUgOPDHL5wKAqc9Ho3XnIx4Txub03xkpwI293qmZqz+hNbfUjuBHzEu0RRDE33+Nr8vqWHIOjGlH0eZyKAid3hCgKWAVMqOTkWK/FjiRgihrWk8tMkZHme9QUdqBveLu97NCB5k/nrazl0Kl7+HnK5vAT/iTmF05AHtltS74/if46rnyoMgvDXC7J1qamC27qXA/mTcwDOWJJWcwJlY4Q3QJbfRjTTsJpyRjC3A3zoRFYPD1oxHZqLn5lbrTMNN7ANbqrP496riux4KCXh9GDKEFFDaGLeo/MzB45QBQhnMHP+FH2Cpl4ve/oIiXwYv/d4vMbpqcriFplG+ITod2WGdGiZ0G8aSZIgk/2jLcxV/B6zuh9Pwv9a3irdVbOX4il3+lzV9nsMY6yyT8P90tPraj4c/Z0On6BG/GgMUFF8yhSDoQPdgKwmCAyZofGzKq4dXLlWDnLqESja1Y/HA998xE5MXM+L7DpnLCV2KzypAsgH1GPmQZ282">
+</div></form>
+
+ <a download="test.html" id="downloadlink" style="display: none" onclick="afterDownload()">Download</a>
+<br>
+<br>
+
+<span id="lblhtmloutput">htmloutput</span>
+
+<script type="text/javascript" src="invoicestyle.js"></script>
+
+
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+{"appName":"Chrome","requestId":"849a6522b7d944678a78981aedade90a"}
+</script>
+<script type="text/javascript" src="https://localhost:44399/2d628a38cfe04c2eadac0153b9425e64/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+
+
+</body></html
